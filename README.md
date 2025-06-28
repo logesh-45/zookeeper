@@ -1,5 +1,5 @@
 # zookeeper
-mkdir zookeeper
+mkdir zookeeper \n
 cd zookeeper
 docker-compose up -d zk1 zk2 zk3 zoonavigator
 docker-compose up -d zk1 zk2 zk3 zoonavigator
