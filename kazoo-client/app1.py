@@ -6,6 +6,7 @@ def connect_to_zookeeper(max_retries=10, delay=2):
     for attempt in range(max_retries):
         try:
             zk = KazooClient(hosts="zk1:2181")
+            # zk = KazooClient(hosts="zk1:2181", use_ssl=True, verify_certs=True, cert_file="/config/cert.pem", key_file="/config/key.pem") 
             zk.start(timeout=5)
             print("Connected to ZooKeeper.",flush=True)
             return zk
@@ -22,7 +23,7 @@ zk.create("/services/payment/instance1", b"http://payment-service:8080", ephemer
 print("Service A registered as /services/payment/instance1 and holding session.",flush=True)
 try:
     while True:
-        time.sleep(10)  # Keep session alive
+        time.sleep(10) 
 except KeyboardInterrupt:
     print("Shutting down Service A.",flush=True)
     zk.stop()
